@@ -1,3 +1,11 @@
+import threading
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
+def run_dummy_server():
+    server = HTTPServer(('0.0.0.0', 8080), SimpleHTTPRequestHandler)
+    server.serve_forever()
+
+threading.Thread(target=run_dummy_server, daemon=True).start()
 import os
 import requests
 import fal_client
